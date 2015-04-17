@@ -1,4 +1,3 @@
-
 //add draggable-jquery with directive
 musicLibraryApp.directive('draggableType', function() {
     return {

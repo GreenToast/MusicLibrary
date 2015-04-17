@@ -1,7 +1,7 @@
 'use strict';
 
 //using modules Animate and Route
-var musicLibraryApp = angular.module('MusicLibraryApp', ['ngRoute',]);
+var musicLibraryApp = angular.module('MusicLibraryApp', ['ngRoute','ngAnimate']);
 
 //Routing url to html-Page
 

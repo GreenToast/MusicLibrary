@@ -1,0 +1,32 @@
+<div ng-include="'templates/navigationBar.html'"></div>
+<div class="main-countainer">
+    <div ng-controller="OverviewTypeController">
+
+        <!-- data table-->
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th ng-show="isArtist">Artist</th>
+                    <th ng-show="isAlbum">Album</th>
+                    <th ng-show="isTrack">Track</th>
+                    <th ng-show="isPlaylist">Playlist</th>
+                    <th ng-show="isArtist">founded</th>
+                    <th ng-show="isAlbum">released</th>
+                    <th ng-show="isTrack">length</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                <tr ng-repeat="data in tabledata">
+                    <td ng-show="isArtist" ><a ng-href="#!/artist/{{data._id}}" ng-bind="data.properties.name"/></td>
+                    <td ng-show="isAlbum" ><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.name"/></td>
+                    <td ng-show="isTrack" ><a ng-href="#!/track/{{data._id}}" ng-bind="data.properties.name"/></td>
+                    <td ng-show="isPlaylist" ><a ng-href="#!/playlist/{{data._id}}" ng-bind="data.properties.name"/></td>
+                    <td ng-show="isArtist"><a ng-href="#!/artist/{{data._id}}" ng-bind="data.properties.founded"/></td></td>
+                    <td ng-show="isAlbum"><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.released"/></td></td>
+                    <td ng-show="isTrack"><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.length"/></td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-include="'templates/createType.html'"></div>
+    </div>
+</div>

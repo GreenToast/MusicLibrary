@@ -1,0 +1,33 @@
+<ng-include src="'templates/navigationBar.html'"/></ng-include>
+<div class="main-countainer">
+    <div ng-controller="TypeController">
+        <h1>{{getCapitalizedType()}}</h1>
+        <h2 ng-bind="data.properties.name"></h2>
+        <ul>
+            <li ng-show="isArtist" ng-bind-template="Founded:{{data.properties.founded}}"/>
+            <li ng-show="isAlbum" ng-bind-template="Released:{{data.properties.released}}"/>
+            <li ng-show="isTrack" ng-bind-template="Length:{{data.properties.length}}"/>
+
+        </ul>
+        <table ng-hide="isTrack" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th ng-show="isArtist">Album</th>
+                    <th ng-show="isArtist">recorded</th>
+                    <th ng-show="isAlbum">Track</th>
+                    <th ng-show="isAlbum">length</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                <tr ng-show="isArtist" ng-repeat="album in data.Album">
+                    <td><a ng-href="#!/album/{{album.Album._id}}" ng-bind="album.Album.properties.name"/></td>
+                    <td><a ng-href="#!/album/{{album.Album._id}}" ng-bind="album.Album.properties.released"/></td>
+                </tr>
+                <tr ng-show="isAlbum" ng-repeat="track in data.Track">
+                    <td><a ng-href="#!/track/{{track.Track._id}}" ng-bind="track.Track.properties.name"/></td>
+                    <td><a ng-href="#!/track/{{track.Track._id}}"  ng-bind="track.Track.properties.length"/></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

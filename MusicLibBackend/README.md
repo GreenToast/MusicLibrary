@@ -36,7 +36,7 @@ node server.js
 
 ### Insert testdata
 
-copy content of 
+copy content of "Insert Music.rtf" to commandline of NEO4J
 
 
 

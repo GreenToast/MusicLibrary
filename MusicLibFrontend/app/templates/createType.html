@@ -24,10 +24,7 @@
                         <li ng-show="isTrack"><input input type="text" name="length" placeholder="Length..." ng-model="newtypeData.properties.length" ngRequired="isTrack"/></li>
                     </ul>
                 </div>
-                <div  class="panel leftPanel">
-                    <div sortable-type="selectedlist" receive-to-list="listselected" receive-from-list="listlib"/>
-                        
-                      
+                <div  class="panel leftPanel"sortable-type-list="selectedlist" receive-to-list="listselected">
                 </div>
                 <div class="panel rightPanel">
                     <ul>

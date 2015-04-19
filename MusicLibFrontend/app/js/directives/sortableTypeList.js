@@ -1,13 +1,12 @@
 //add sortable-jquery with directive
-musicLibraryApp.directive('sortableType', function(ngAttr) {
+musicLibraryApp.directive('sortableTypeList', function(ngAttr) {
     return {
         restrict: 'A',
         scope: {
             receiveToList: '=',
-            receiveFromList: '=',
             deleteType: '&'
         },       
-        templateUrl: 'templates/directives/sortableType.html',
+        templateUrl: 'templates/directives/sortableTypeList.html',
         link: function(scope, elm) {   
             var initialized = false;
             
@@ -15,9 +14,10 @@ musicLibraryApp.directive('sortableType', function(ngAttr) {
                 scope.receiveToList.splice(to, 0, scope.receiveToList.splice(from, 1)[0]);
             }
             
-            function addType(pos,type) {
+            function addType(pos,id,name) {
+                
                 if (initialized) {
-                    scope.receiveToList.splice(pos, 0,type);
+                    scope.receiveToList.splice(pos, 0,{_id:id,properties:{name:name}});
                 }
             }
             
@@ -32,24 +32,26 @@ musicLibraryApp.directive('sortableType', function(ngAttr) {
                 return el;
             }
             
-            //TODO: fix function
-            scope.deleteType = function(id){
-                for (var i = 0; i < scope.receiveToList.length; i++){
-                    if(scope.receiveToList[i]._id === id){
-                        scope.$apply(function(){
-                            scope.receiveToList.splice (i,i);
-                        });
-                        break;
-                    }
-                }      
-            }
-            
             angular.element(elm).sortable({
                 revert: true,
             });
+            
+            //TODO: fix function
+            elm.on('removeSortedItem', function(item){
+                var pos = i;
+                for (var i = 0; i < scope.receiveToList.length; i++){
+                    if(scope.receiveToList[i] === item){
+                        pos = i;
+                        break;
+                    }
+                }
+                scope.receiveToList.splice (pos,1);
+            });
+            
+            
             elm.disableSelection();
             
-            elm.on( "sortdeactivate", function( event, ui ) { 
+            elm.on( 'sortdeactivate', function( event, ui ) { 
                 var from = angular.element(ui.item).scope().$index;
                 var to = elm.children().index(ui.item);
                 if(to>=0){
@@ -58,16 +60,13 @@ musicLibraryApp.directive('sortableType', function(ngAttr) {
                            moveType(from,to); 
                         }else{
                             var id = parseInt(ui.item.context.attributes['draggable-type'].nodeValue);
-                            var el = lookup(id);
-                            if(el){
-                                addType(to,el);
-                            }
+                            var name = ui.item.context.innerText;
+                            addType(to,id,name);
                             ui.item.remove();
                         }
                     });
                 }
             });  
-            
     
             
             function init() {

@@ -75,7 +75,6 @@ form input.ng-valid.ng-dirty {
 }
 
 .bm-selecttype button{
-    margin: 0px;
     padding: 1px;
     border: 0px;
     float: right;

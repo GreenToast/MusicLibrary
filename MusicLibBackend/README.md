@@ -30,9 +30,9 @@ Start the server and naivgate to the server-page default: [http://localhost:7474
 
 ### Running the App during Development
 
-Then provide the credentials and the neo4j adress in the config.ja. Afterwards you can start your own development backend server by running:
+Then provide the credentials and the neo4j adress in the config.ja. Afterwards you can start your own development backend server out of the rootpath by running:
 
-node server.js
+node server/server.js 
 
 ### Insert testdata
 

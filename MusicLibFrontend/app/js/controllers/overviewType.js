@@ -9,7 +9,7 @@ musicLibraryApp.controller('OverviewTypeController',function ($scope,MusicServic
     
     //exclude track from being able to dragdrop types
     if(!$scope.isTrack){
-        $scope.listselected = [{properties:{name:'Dennis'}}];
+        $scope.listselected = [];
         $scope.listlib = [];
         
         //define associated type, provisional

@@ -7,10 +7,11 @@ musicLibraryApp.directive('draggableType', function() {
                     helper: 'clone',
                     revert: 'invalid'
                 };
-            if(attrs.connecttosortable){
-                params.connectToSortable = '#'+attrs.connecttosortable;
+            if(attrs.connectToSortable){
+                params.connectToSortable = "[sortable-type='"+attrs.connectToSortable+"']";
             }
-            $(elm).draggable(params);
+            angular.element(elm).draggable(params);
+            elm.disableSelection();
         }
     };
 })

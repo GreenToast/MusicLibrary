@@ -25,14 +25,13 @@
                     </ul>
                 </div>
                 <div  class="panel leftPanel">
-                    <ol id="selectedlist" sortable-type data-drop="true" ng-model="listselected" data-jqyoui-options="{accept:'.bm-selecttype'}" jqyoui-droppable="{multiple:true}">
-                        <!--li>put here</li-->
-                      <li  class="bm-selecttype" ng-repeat="sel in listselected" ng-bind="sel.properties.name"></li>
-                    </ol>
+                    <div sortable-type="selectedlist" receive-to-list="listselected" receive-from-list="listlib"/>
+                        
+                      
                 </div>
                 <div class="panel rightPanel">
                     <ul>
-                      <li draggable-type connectToSortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib" ng-bind="el.properties.name"></li>
+                      <li draggable-type="{{el._id}}" connect-to-sortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib" ng-bind="el.properties.name"></li>
                     </ul>
                 </div>
                 <div class="modal-footer">

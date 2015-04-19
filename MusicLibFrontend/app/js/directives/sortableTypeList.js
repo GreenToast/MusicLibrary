@@ -31,13 +31,15 @@ musicLibraryApp.directive('sortableTypeList', function(ngAttr) {
                 });
                 return el;
             }
-            
-            angular.element(elm).sortable({
+            var listElement = angular.element(angular.element(elm).children()[0]);
+            listElement.sortable({
                 revert: true,
             });
             
+            listElement.disableSelection();
+            
             //TODO: fix function
-            elm.on('removeSortedItem', function(item){
+            listElement.on('removeSortedItem', function(item){
                 var pos = i;
                 for (var i = 0; i < scope.receiveToList.length; i++){
                     if(scope.receiveToList[i] === item){
@@ -48,12 +50,9 @@ musicLibraryApp.directive('sortableTypeList', function(ngAttr) {
                 scope.receiveToList.splice (pos,1);
             });
             
-            
-            elm.disableSelection();
-            
-            elm.on( 'sortdeactivate', function( event, ui ) { 
+            listElement.on( 'sortdeactivate', function( event, ui ) { 
                 var from = angular.element(ui.item).scope().$index;
-                var to = elm.children().index(ui.item);
+                var to = listElement.children().index(ui.item);
                 if(to>=0){
                     scope.$apply(function(){
                         if(from>=0){

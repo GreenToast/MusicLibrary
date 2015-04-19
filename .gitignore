@@ -1,3 +1,5 @@
 MusicLibBackend/node_modules/**
 MusicLibFrontend/app/node_modules/**
+neo4j-community-2.2.0/**
 .DS_Store
+neo4j-community-2.2.0/data/graph.db/schema/label/lucene/_2x.cfs

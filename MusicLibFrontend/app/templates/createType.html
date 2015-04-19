@@ -23,12 +23,14 @@
                         <li ng-show="isTrack"><input input type="text" name="length" placeholder="Length..." ng-model="newtypeData.properties.length" ngRequired="isTrack"/></li>
                     </ul>
                 </div>
-                <div  class="panel leftPanel" sortable-type-list="selectedlist" receive-to-list="listselected">
-                </div>
-                <div class="panel rightPanel">
-                    <ul>
-                      <li draggable-type="{{el._id}}" connect-to-sortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib" ng-bind="el.properties.name"></li>
-                    </ul>
+                <div ng-hide="isTrack">
+                    <div  class="panel leftPanel" sortable-type-list="selectedlist" receive-to-list="listselected">
+                    </div>
+                    <div class="panel rightPanel">
+                        <ul>
+                          <li draggable-type="{{el._id}}" connect-to-sortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib" ng-bind="el.properties.name"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

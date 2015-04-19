@@ -71,7 +71,9 @@ form input.ng-valid.ng-dirty {
     padding: 4px;
     border: 1px solid hsl(194, 66%, 40%);;
     border-radius: 8px;
-    background-image: -webkit-linear-gradient(top,hsl(194, 66%, 60%),hsl(194, 66%, 40%));
+    background-image: -webkit-linear-gradient(top, hsl(208, 56%, 46%),hsl(208, 56%, 34%));
+   /* background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);*/
+   /* background-image: -webkit-linear-gradient(top,hsl(194, 66%, 60%),hsl(194, 66%, 40%));*/
 }
 
 .bm-selecttype button{

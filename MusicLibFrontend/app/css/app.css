@@ -74,6 +74,14 @@ form input.ng-valid.ng-dirty {
     background-image: -webkit-linear-gradient(top,hsl(194, 66%, 60%),hsl(194, 66%, 40%));
 }
 
+.bm-selecttype button{
+    margin: 0px;
+    padding: 1px;
+    border: 0px;
+    float: right;
+    background-color: transparent;
+}
+
 /* panel areas*/
 .panel {
     height:100%; 

@@ -8,5 +8,8 @@
     "express": "^3.20.0",
     "neo4j": "^2.0.0-RC1"
   },
-  "main": "server.js"
+  "main": "server.js",
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
 }

@@ -1,4 +1,4 @@
-MusicLibBackend/node_modules/**
+MusicLibBackend/server/node_modules/**
 MusicLibFrontend/app/node_modules/**
 neo4j-community-2.2.0/**
 .DS_Store

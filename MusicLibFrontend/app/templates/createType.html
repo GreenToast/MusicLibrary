@@ -10,11 +10,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Create {{getCapitalizedType()}}</h4>
             </div>
             <form name="typeForm" novalidate>
                 <div class="modal-body">
-                    <h1>Create {{getCapitalizedType()}}</h1>
                     <ul>
                         <li>
                             <input type="text" name="typeName" placeholder="Name..." ng-model="newtypeData.properties.name" required/>
@@ -32,7 +31,7 @@
                     </ul>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" ng-click="cleanAction()" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" ng-click="createAction()" ng-disabled="typeForm.$invalid" data-dismiss="modal">Save changes</button>
                 </div>
             </form>

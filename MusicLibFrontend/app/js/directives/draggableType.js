@@ -8,6 +8,8 @@ musicLibraryApp.directive('draggableType', function() {
                     revert: 'invalid'
                 };
             if(attrs.connectToSortable){
+                
+                //connect to ol in sortableTypeList-Directive
                 params.connectToSortable = "[sortable-type-list='"+attrs.connectToSortable+"'] > ol";
             }
             angular.element(elm).draggable(params);

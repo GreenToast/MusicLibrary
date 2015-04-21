@@ -1,5 +1,5 @@
 //TODO add complete REST-API
-musicLibraryApp.factory('MusicService',function($http){
+angular.module('MusicLibraryApp').factory('MusicService',function($http){
     
     var url ='http://localhost:4730/api/';
     return {

@@ -1,5 +1,5 @@
 //add sortable-jquery with directive
-musicLibraryApp.directive('sortableTypeList', function(ngAttr) {
+angular.module('MusicLibraryApp').directive('sortableTypeList', function(ngAttr) {
     return {
         restrict: 'A',
         scope: {

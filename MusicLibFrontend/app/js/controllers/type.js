@@ -1,4 +1,4 @@
-musicLibraryApp.controller('TypeController',function ($scope,MusicService,$routeParams,capitalizeFirstLetter) {
+angular.module('MusicLibraryApp').controller('TypeController',function ($scope,MusicService,$routeParams,capitalizeFirstLetter) {
     var id = $routeParams.id;
     $scope.type = $routeParams.type;
     $scope.isArtist = ($scope.type === 'artist');

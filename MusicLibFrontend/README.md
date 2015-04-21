@@ -11,16 +11,22 @@ We also use a number of node.js tools to initialize and test angular-seed. You m
 its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 
-### Running the App during Development
+### Resolving dependencies
 
-You can start this webserver with `npm start` but you may choose to
-install the tool globally:
+Running the command npm install out of the root folder to install all dependencies.
 
-npm install -g http-server
+npm install
+
+after that run the gulp-script to build the application by executing
+
+gulp
+
+now the project lies in the build folder
+
+### WebServer start
 
 
-Then you can start your own development web server to serve static files from a folder by
+Then you can start your own development web server to serve static files from the build folder by
 running:
 
-```
 http-server -a localhost -p 8000

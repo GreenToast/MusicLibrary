@@ -1,5 +1,5 @@
 //add draggable-jquery with directive
-musicLibraryApp.directive('sortedTypeItem', function() {
+angular.module('MusicLibraryApp').directive('sortedTypeItem', function() {
     return {
         restrict: 'A',
         scope:{

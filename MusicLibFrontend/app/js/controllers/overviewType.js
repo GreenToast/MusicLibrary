@@ -1,4 +1,4 @@
-musicLibraryApp.controller('OverviewTypeController',function ($scope,MusicService,$routeParams,capitalizeFirstLetter) {
+angular.module('MusicLibraryApp').controller('OverviewTypeController',function ($scope,MusicService,$routeParams,capitalizeFirstLetter) {
     
     //scope variables
     $scope.type = $routeParams.type;

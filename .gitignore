@@ -2,6 +2,8 @@ MusicLibBackend/server/node_modules/**
 MusicLibBackend/node_modules/**
 MusicLibFrontend/app/node_modules/**
 MusicLibFrontend/node_modules/**
-neo4j-community-2.2.0/**
+MusicLibFrontend/bower_components
+MusicLibFrontend/app/lib
+neo4j-community-2.2.0
 MusicLibFrontend/build
 .DS_Store

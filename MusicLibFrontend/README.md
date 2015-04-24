@@ -19,14 +19,6 @@ npm install
 
 after that run the gulp-script to build the application by executing
 
-gulp
+gulp run
 
-now the project lies in the build folder
-
-### WebServer start
-
-
-Then you can start your own development web server to serve static files from the build folder by
-running:
-
-http-server -a localhost -p 8000
+now the project lies in the build folder and is available under [http://localhost:9000/](http://localhost:9000/)

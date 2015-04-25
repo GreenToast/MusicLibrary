@@ -41,17 +41,17 @@ td a:hover {
 }
 
 /* validation invalid*/
-form input.ng-invalid.ng-dirty {
+form .datainput.ng-invalid.ng-dirty {
     background-color: #ffcbc1;
 }
 
 /* validation invalid*/
-form input.ng-invalid:focus {
+form .datainput.ng-invalid:focus {
     outline-color: red;
 }
 
 /* validation valid*/
-form input.ng-valid.ng-dirty {
+form .datainput.ng-valid.ng-dirty {
     background-color: #1dca07;
 }
 
@@ -95,8 +95,20 @@ form input.ng-valid.ng-dirty {
     float:right;
     width: 48%;
 }
+
+.rightPanel div.search {
+    padding-left:40px;
+/*    width:100%;*/
+}
+
+.rightPanel div.search input {
+   width:100%;
+}
+
+
 .leftPanel {
  /* min-height: 100px;*/
+  padding-top:26px;
   float: left;
   width: 48%;
 }

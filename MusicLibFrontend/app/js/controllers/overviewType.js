@@ -6,6 +6,7 @@ angular.module('MusicLibraryApp').controller('OverviewTypeController',function (
     $scope.isAlbum = ($scope.type === 'album');
     $scope.isTrack = ($scope.type === 'track');
     $scope.isPlaylist = ($scope.type === 'playlist');
+    $scope.search;
     $scope.newtypeData = {};
     
     //scope functions

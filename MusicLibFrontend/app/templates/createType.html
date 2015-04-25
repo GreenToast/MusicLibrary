@@ -16,19 +16,22 @@
                 <div class="modal-body">
                     <ul>
                         <li>
-                            <input type="text" name="typeName" placeholder="Name..." ng-model="newtypeData.properties.name" required/>
+                            <input type="text" class="datainput" name="typeName" placeholder="Name..." ng-model="newtypeData.properties.name" required/>
                         </li>
-                        <li ng-show="isArtist"><input input type="number" name="founded" placeholder="Founded..." ng-model="newtypeData.properties.founded" ng-required ="isArtist"/></li>
-                        <li ng-show="isAlbum"><input input type="number" name="released" placeholder="Released..." ng-model="newtypeData.properties.released" ng-required="isAlbum"/></li>
-                        <li ng-show="isTrack"><input input type="text" name="length" placeholder="Length..." ng-model="newtypeData.properties.length" ngRequired="isTrack"/></li>
+                        <li ng-show="isArtist"><input class="datainput" type="number" name="founded" placeholder="Founded..." ng-model="newtypeData.properties.founded" ng-required ="isArtist"/></li>
+                        <li ng-show="isAlbum"><input class="datainput" input type="number" name="released" placeholder="Released..." ng-model="newtypeData.properties.released" ng-required="isAlbum"/></li>
+                        <li ng-show="isTrack"><input class="datainput" input type="text" name="length" placeholder="Length..." ng-model="newtypeData.properties.length" ngRequired="isTrack"/></li>
                     </ul>
                 </div>
                 <div ng-hide="isTrack">
                     <div  class="panel leftPanel" sortable-type-list="selectedlist" receive-to-list="listselected">
                     </div>
                     <div class="panel rightPanel">
+                        <div class="search">
+                            <input  placeholder="Search..." ng-model="search"/>
+                        </div>
                         <ul>
-                          <li draggable-type="{{el._id}}" connect-to-sortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib" ng-bind="el.properties.name"></li>
+                          <li draggable-type="{{el._id}}" connect-to-sortable="selectedlist" class="bm-selecttype" ng-repeat="el in listlib |filter:search|limitTo:10" ng-bind="el.properties.name"></li>
                         </ul>
                     </div>
                 </div>

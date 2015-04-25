@@ -39,7 +39,7 @@ angular.module('MusicLibraryApp').directive('sortableTypeList', function(ngAttr)
             listElement.disableSelection();
             
             //TODO: fix function
-            listElement.on('removeSortedItem', function(item){
+            listElement.on('removeSortedItem', function(event,item){
                 var pos = i;
                 for (var i = 0; i < scope.receiveToList.length; i++){
                     if(scope.receiveToList[i] === item){

@@ -29,13 +29,21 @@ gulp.task('clean', function(cb) {
     cb();
 });
 
-gulp.task('scripts', function() {
+/*gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
+  .pipe(sourcemaps.init())
   .pipe(concat('app.js'))
       .pipe(ngAnnotate())
       .pipe(uglify())
     .pipe(sourcemaps.write('../js'))
     .pipe(gulp.dest('build/js'));
+});*/
+
+// Copy all static images
+gulp.task('scripts', function() {
+  return gulp.src(paths.scripts, { base: './app/' })
+    // Pass in options to the task
+    .pipe(gulp.dest('build')); 
 });
 
 // Copy all static images

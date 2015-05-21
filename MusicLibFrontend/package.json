@@ -9,12 +9,17 @@
     "rmdir": "^1.1.0"
   },
   "devDependencies": {
+    "del": "^1.2.0",
+    "fs": "0.0.2",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.5.2",
+    "gulp-connect": "^2.2.0",
     "gulp-imagemin": "^2.2.1",
     "gulp-ng-annotate": "^0.5.2",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
-    "http-server": "^0.8.0"
+    "http-server": "^0.8.0",
+    "recursive-readdir": "^1.2.1",
+    "rmdir": "^1.1.0"
   }
 }

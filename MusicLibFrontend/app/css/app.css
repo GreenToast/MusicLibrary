@@ -117,3 +117,7 @@ form .datainput.ng-valid.ng-dirty {
    height: 100%;  
    overflow-y: scroll;
 }
+
+.modal{
+  min-width: 525px;  
+}

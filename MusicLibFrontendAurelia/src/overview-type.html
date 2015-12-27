@@ -1,0 +1,56 @@
+<template>
+    <require from='create-type'></require>
+    <div class="main-countainer">
+        <h3>${capitalizedType}</h3>
+            <!-- data table-->
+            <!--table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th ng-show="isArtist">Artist</th>
+                        <th ng-show="isAlbum">Album</th>
+                        <th ng-show="isTrack">Track</th>
+                        <th ng-show="isPlaylist">Playlist</th>
+                        <th ng-show="isArtist">founded</th>
+                        <th ng-show="isAlbum">released</th>
+                        <th ng-show="isTrack">length</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    <tr ng-repeat="data in tabledata">
+                        <td ng-show="isArtist" ><a ng-href="#!/artist/{{data._id}}" ng-bind="data.properties.name"/></td>
+                        <td ng-show="isAlbum" ><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.name"/></td>
+                        <td ng-show="isTrack" ><a ng-href="#!/track/{{data._id}}" ng-bind="data.properties.name"/></td>
+                        <td ng-show="isPlaylist" ><a ng-href="#!/playlist/{{data._id}}" ng-bind="data.properties.name"/></td>
+                        <td ng-show="isArtist"><a ng-href="#!/artist/{{data._id}}" ng-bind="data.properties.founded"/></td></td>
+                        <td ng-show="isAlbum"><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.released"/></td></td>
+                        <td ng-show="isTrack"><a ng-href="#!/album/{{data._id}}" ng-bind="data.properties.length"/></td></td>
+                    </tr>
+                </tbody>
+            </table-->
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th show.bind="isArtist">Artist</th>
+                        <th show.bind="isAlbum">Album</th>
+                        <th show.bind="isTrack">Track</th>
+                        <th show.bind="isPlaylist">Playlist</th>
+                        <th show.bind="isArtist">founded</th>
+                        <th show.bind="isAlbum">released</th>
+                        <th show.bind="isTrack">length</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    <tr repeat.for="data of tabledata">
+                        <td show.bind="isArtist" ><a href="#/artist/${data._id}" />${data.properties.name}</td>
+                        <td show.bind="isAlbum" ><a href="#/album/${data._id}" />${data.properties.name}</td>
+                        <td show.bind="isTrack" ><a href="#/track/${data._id}" />${data.properties.name}</td>
+                        <td show.bind="isPlaylist" ><a href="#/playlist/${data._id}" />${data.properties.name}</td>
+                        <td show.bind="isArtist"><a href="#/artist/${data._id}" />${data.properties.founded}</td></td>
+                        <td show.bind="isAlbum"><a href="#/album/${data._id}" />${data.properties.released}</td></td>
+                        <td show.bind="isTrack"><a href="#/album/${data._id}" />${data.properties.length}</td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <create-type type.bind="type"></create-type>
+    </div>
+</template>

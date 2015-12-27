@@ -1,0 +1,55 @@
+<template>
+    <require from='sortable'></require>
+    <require from='draggable'></require>
+    <require from='sorted-type-item'></require>
+    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal" click.trigger="cleanAction()">
+      Create ${getCapitalizedType()}
+    </button>
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Create ${getCapitalizedType()}</h4>
+                </div>
+                <form name="typeForm" novalidate>
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                <input type="text" class="datainput" name="typeName"  value.bind="newtypeData.properties.name" placeholder="Name..." required></li>
+                            </li>
+                            <li show.one-way="isArtist"><input class="datainput" type="number" name="founded" placeholder="Founded..." value.bind="newtypeData.properties.founded" /> <!--ng-required ="isArtist"-->
+                            <li show.one-way="isAlbum"><input class="datainput" input type="number" name="released" placeholder="Released..." value.bind="newtypeData.properties.released"/>
+                            <li show.one-way="isTrack"><input class="datainput" input type="text" name="length" placeholder="Length..." value.bind="newtypeData.properties.length"/><!--ng-required ="isTrack"-->
+                        </ul>
+                    </div>
+                    <div class="selection" show.one-way="!isTrack">
+                        <div  class="panel leftPanel" 
+                            <ol id="selectedlist" sortable="receive-to-list.bind: listselected; receive-from-list.bind: listlib" >
+                                <li class="bm-selecttype" repeat.for="sel of listselected">
+                                    <sorted-type-item type-item.bind="sel"/>
+                                </li>
+                            </ol>
+                        </div>
+                        <div class="panel rightPanel">
+                            <!--div class="search">
+                                <input  placeholder="Search...">${search}</input>
+                            </div-->
+                            <ul>
+                              <li connect-to-sortable="selectedlist" class="bm-selecttype" repeat.for="el of listlib" draggable><div id="${el._id}"/>${el.properties.name}</li> <!--|filter:search|limitTo:10"-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" click.trigger="createAction()"  data-dismiss="modal">Save changes</button><!--ng-disabled="typeForm.$invalid"-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>

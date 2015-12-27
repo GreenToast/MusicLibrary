@@ -1,0 +1,123 @@
+.navbar{
+    padding-bottom: 1px;
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.table{
+  width: 50%;  
+}
+/* add padding that main area is below navbar */
+.main-countainer{
+    padding: 10px;
+}
+
+/* expand a in td to full-size, so that it will be clickable*/
+td a { 
+    display: block;
+    width: 100%;
+    height: 100%; 
+}
+
+.table-bordered>tbody>tr>td {padding:0px;}
+.table-hover>tbody>tr:hover{background-color:hsl(194, 66%, 95%)}
+
+/* reset link color and underline to standard */
+td a:link {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* reset link color and underline to standard */
+td a:visited {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* reset link color and underline to standard */
+td a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* validation invalid*/
+form .datainput.ng-invalid.ng-dirty {
+    background-color: #ffcbc1;
+}
+
+/* validation invalid*/
+form .datainput.ng-invalid:focus {
+    outline-color: red;
+}
+
+/* validation valid*/
+form .datainput.ng-valid.ng-dirty {
+    background-color: #1dca07;
+}
+
+/* dialog footer area*/
+.modal-footer{
+    display: block; clear: both;
+    width: 100%;
+}
+
+/* style of dragdrop-types*/
+.bm-selecttype {
+    font-family: 'Consolas', monospace;
+    font-size: 0.9em;
+   
+    color: #ffffff;
+    margin: 2px;
+    padding: 4px;
+    border: 1px solid hsl(194, 66%, 40%);;
+    border-radius: 8px;
+    background-image: -webkit-linear-gradient(top, hsl(208, 56%, 46%),hsl(208, 56%, 34%));
+   /* background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);*/
+   /* background-image: -webkit-linear-gradient(top,hsl(194, 66%, 60%),hsl(194, 66%, 40%));*/
+}
+
+.bm-selecttype button{
+    padding: 1px;
+    border: 0px;
+    float: right;
+    background-color: transparent;
+}
+
+/* panel areas*/
+.panel {
+    height:330px; 
+    background-color: hsl(0, 0%, 90%); 
+    margin: 5px;
+}
+
+.rightPanel {
+    /*border: 1px solid black;*/
+    float:right;
+    width: 48%;
+}
+
+.rightPanel div.search {
+    padding-left:40px;
+/*    width:100%;*/
+}
+
+.rightPanel div.search input {
+   width:100%;
+}
+
+
+.leftPanel {
+  float: left;
+  width: 48%;
+      
+}
+
+.leftPanel ol{
+   padding-top:26px;
+   height: 100%;  
+   overflow-y: scroll;
+}
+
+.modal{
+  min-width: 525px;  
+}

@@ -1,0 +1,47 @@
+{
+  "name": "MusicLibFronendAurelia",
+  "description": "A starter kit for building a standard navigation-style app with Aurelia.",
+  "main": "index.js",
+  "authors": [
+    "dennis neuendorf"
+  ],
+  "license": "CC0-1.0",
+  "keywords": [
+    "aurelia",
+    "navigation",
+    "skeleton"
+  ],
+  "homepage": "https://github.com/GreenToast/MusicLibrary",
+  "moduleType": [
+    "es6"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "aurelia-animator-css": "~0.18.0",
+    "aurelia-bootstrapper": "~0.19.0",
+    "aurelia-framework": "~0.18.0",
+    "fetch-client": "https://github.com/aurelia/fetch-client",
+    "aurelia-history-browser": "~0.10.0",
+    "aurelia-loader-default": "~0.12.0",
+    "aurelia-logging-console": "~0.9.0",
+    "aurelia-router": "~0.14.1",
+    "bootstrap": "~3.3.6",
+    "fetch": "~0.10.1",
+    "font-awesome": "~4.5.0",
+    "text": "~2.0.14",
+    "templating": "https://github.com/aurelia/templating",
+    "templating-binding": "https://github.com/aurelia/templating-binding",
+    "templating-resources": "https://github.com/aurelia/templating-resources",
+    "templating-router": "https://github.com/aurelia/templating-router"
+  },
+  "devDependencies": {
+    "babel": "*",
+    "core": "core-js#*"
+  }
+}

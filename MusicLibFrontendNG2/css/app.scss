@@ -46,12 +46,12 @@ form .datainput.ng-invalid.ng-dirty {
 }
 
 /* validation invalid*/
-form .datainput.ng-invalid.ng-touched:focus {
+form .datainput.ng-invalid.ng-dirty {
     outline-color: red;
 }
 
 /* validation valid*/
-form .datainput.ng-valid.ng-dirty.ng-touched {
+form .datainput.ng-valid.ng-dirty {
     background-color: #1dca07;
 }
 
@@ -109,13 +109,11 @@ form .datainput.ng-valid.ng-dirty.ng-touched {
 .leftPanel {
   float: left;
   width: 48%;
-      
-}
-
-.leftPanel ol{
-   padding-top:26px;
-   height: 100%;  
-   overflow-y: scroll;
+  & ol{
+     padding-top:26px;
+     height: 100%;  
+     overflow-y: scroll;
+  }
 }
 
 .modal{

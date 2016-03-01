@@ -38,7 +38,7 @@ import {CreateTypeComponent} from './create-type.component';
 })
 export class OverviewTypeComponent extends BaseTypeComponent {
 
-	musicService: MusicService;
+
 	tabledata: any;
 
 	constructor(private _routeParams: RouteParams, private _musicService: MusicService) {
@@ -54,7 +54,7 @@ export class OverviewTypeComponent extends BaseTypeComponent {
 
 	loadData() {
         //load all types, TODO: filter by search result, reduce to 10, results
-        this._musicService.getAll(this.type).subscribe(res => 
+        this._musicService.getAll(this.type).subscribe(res =>
         {
             console.log('type',this.type);
 			this.tabledata = JSON.parse((<any>res)._body); 

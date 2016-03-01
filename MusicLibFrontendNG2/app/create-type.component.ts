@@ -6,8 +6,8 @@ import 'jquery-ui';
 import {BaseType,Properties} from './classes/base-type';
 import {MusicService} from './services/music.service';
 import {RemoveTypeEvent,SortedTypeComponent} from './sorted-type.component';
-import {DraggableDirective} from './directives/draggable.directive';
-import {SortableDirective, AddTypeEvent} from './directives/sortable.directive';
+//import {DraggableDirective} from './directives/draggable.directive';
+//import {SortableDirective, MoveTypeEvent,AddTypeEvent} from './directives/sortable.directive';
 
 @Component({
     selector:'create-type',
@@ -40,15 +40,16 @@ import {SortableDirective, AddTypeEvent} from './directives/sortable.directive';
                     </div>
                     <div class="selection" *ngIf="!isTrack()">
                         <div  class="panel leftPanel">
-                           <ol id="selectedlist" [dirSortable] [receiveFromList]="listlib" (addType)="handleAddType($event)" >
-                                <li class="bm-selecttype" *ngFor="#sel of listselected">
-                                    <sorted-type [typeItem]="sel" (removeType)="handleRemoveType($event)"></sorted-type>
+                           <ol id="selectedlist" (dragover)="dragover($event)" (drop)="drop($event)">
+                                <li class="bm-selecttype" *ngFor="#sel of listselected; #idx = index" draggable="true" (dragstart)="sortstart($event,idx)" (dragend)="sortend()" (dragover)="sortover($event,idx)" (drop)="sortdrop($event)">
+                                     {{sel.properties.name}}
+                                      <button (click)="removeType(idx)">x</button>
                                 </li>
                             </ol>
                         </div>
                         <div class="panel rightPanel">
                             <ul>
-                              <li class="bm-selecttype" *ngFor="#el of listlib" [dirDraggable] [connectToSortable]="'#selectedlist'" ><div id="{{el._id}}">{{el.properties.name}}</div></li>
+                              <li class="bm-selecttype" *ngFor="#el of listlib; #lindex = index" draggable="true" (dragstart)="dragstart($event,lindex)" (dragend)="dragend($event)" ><div id="{{el._id}}">{{el.properties.name}}</div></li>
                             </ul>
                         </div>
                     </div>
@@ -60,48 +61,46 @@ import {SortableDirective, AddTypeEvent} from './directives/sortable.directive';
             </div>
         </div>
     </div>
-  	`,
-    directives: [SortableDirective, DraggableDirective, SortedTypeComponent]
+  	`
 })
 
 export class CreateTypeComponent extends BaseTypeComponent{
 
+
     newtypeData: BaseType;
     listlib: any[] = [];
     listselected: any[] = [];
+    connType: string = '';
 
     constructor(private zone: NgZone, private elementRef: ElementRef, private musicService: MusicService) {
         super();
         this.newtypeData = new BaseType('',[],new Properties('','','',''));
     }
 
-    ngAfterContentChecked() {
-        console.log('ngAfterContentChecked', this.listselected);
-    }
-
     set type(type:string) {
         this._type = type;
-        console.log('ngOninit,CreateComponentType', this._type,type);
         this.loadData();
     }
 
+    /*ngAfterContentChecked() {
+        console.log('ngAfterContentChecked', this.listselected);
+    }*/
+
     loadData() {
-        var connType:string = '';
+        
         //exclude track from being able to dragdrop types
         if (!this.isTrack()) {
-
-            
 
             //define associated type, provisional
 
             if (this.isArtist())
-                connType = 'album';
+                this.connType = 'album';
             if (this.isAlbum())
-                connType = 'track';
+                this.connType = 'track';
             if (this.isPlaylist())
-                connType = 'track';
-            if (connType)
-                this.musicService.getAll(connType)
+                this.connType = 'track';
+            if (this.connType)
+                this.musicService.getAll(this.connType)
                     .subscribe(res => { this.listlib = JSON.parse((<any>res)._body); console.log('listlib', this.listlib); });
             else
                 this.listlib = [];
@@ -109,9 +108,15 @@ export class CreateTypeComponent extends BaseTypeComponent{
         }
     }
 
-    handleAddType(event: AddTypeEvent) {
+    /*handleAddType(event: AddTypeEvent) {
         this.addType(event.pos, event.id, event.name);
     }
+
+    handleMoveType(event: MoveTypeEvent) {
+        //var pos = this.lookupArrayPos((<any>event.el)[0].parentElement);
+        this.moveType(event.from,event.to);
+        //event.el.remove();
+    }*/
 
     handleRemoveType(event: RemoveTypeEvent) {
         var pos = this.lookupArrayPos((<any>event.el)[0].parentElement);
@@ -124,6 +129,13 @@ export class CreateTypeComponent extends BaseTypeComponent{
             this.listselected.splice(pos, 0, { _id: id, properties: { name: name } });
         });
     }
+
+    moveType(from:number, to:number) {
+        //this.zone.run(() => {
+        this.listselected.splice(to, 0, this.listlib.splice(from, 1)[0]);
+        //});
+    }
+
 
     removeType(pos) {
         this.zone.run(() => {
@@ -142,4 +154,114 @@ export class CreateTypeComponent extends BaseTypeComponent{
         }
         return -1;
     }
+
+    create() {
+        console.log('createType');
+        var capType = this.connType.charAt(0).toUpperCase() + this.connType.slice(1);
+        if (this.listselected.length > 0) {
+            this.newtypeData[capType] = [];
+        };
+        this.listselected.forEach((el, i) =>
+        //var el = this.listselected[i];
+        {
+            var obj; 
+            if (this.connType == 'track') {
+                obj = {
+                    "relation": {
+                        trackNo: i + 1
+                     },
+                    "Track": el
+                }
+                //obj[capType] = el;
+                //obj.relation.trackNo = i + 1;
+            }
+            else{
+                obj = {
+                    "relation": {},
+                    capType : el
+                }
+            }
+            this.newtypeData[capType].push(obj);
+        }
+        );
+        var json = JSON.stringify(this.newtypeData);
+        console.log(this.newtypeData, this.newtypeData.properties, json);
+        //this.musicService.create(this.type, json).subscribe(res=> console.log('created', JSON.parse(res.response)));
+    }
+
+
+
+    cleanAction() {
+        this.newtypeData = new BaseType('', [], new Properties('', '', '', ''));
+        this.listselected = [];
+    }
+
+    //sortable
+
+    private source: any;
+    private origpos: number;
+    private possource: number;
+    private dropped: boolean = false;
+
+    sortdrop(e: any) {
+        this.dropped = true;
+    }
+
+    sortstart(e: any, possource: number) {
+        this.possource = possource;
+        this.origpos = this.possource;
+        e.dataTransfer.effectAllowed = 'move';
+    }
+
+    sortend() {
+        if (!this.dropped) {
+            this.moveType(this.possource, this.origpos);
+        }
+        this.dropped = false;
+    }
+
+    sortover(e: any, posto: number) {
+        console.log(e);
+        e.preventDefault();
+        if (e.dataTransfereffectAllowed == 'move'){
+            if (posto != this.possource ) {
+                this.moveType(this.possource, posto);
+                this.possource = posto;
+            }
+        }
+        else{
+            console.log('copysortover');
+        }
+    }
+
+    //draggable
+
+    private added = 0;
+    
+    dragstart(e: any, possource: number) {
+        //this.possource = possource;
+        //this.origpos = this.possource;
+        e.dataTransfer.effectAllowed = 'copymove';
+        console.log('dragstart', this.listlib[possource]);
+        let object = this.listlib[possource];
+        e.dataTransfer.setData('id', object._id);
+        e.dataTransfer.setData('name', object.properties.name);
+    }
+
+    dragover(e: any) {
+        e.preventDefault();
+        console.log('dragover');
+    }
+
+    drop(e: any) {
+        e.preventDefault();
+        var x = e.dataTransfer.getData('data')
+        console.log('drop', e.dataTransfer.getData('id'), e.dataTransfer.getData('name'));
+        this.addType(0, e.dataTransfer.getData('id'), e.dataTransfer.getData('name'));
+    }
+
+    dragend(e: any) {
+        console.log('dragend');
+    }
+
 }

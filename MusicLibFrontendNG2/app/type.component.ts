@@ -92,6 +92,7 @@ export class TypeComponent extends BaseTypeComponent{
 	        );
 	    }
 	}
+
 }
 
 

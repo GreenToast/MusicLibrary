@@ -1,0 +1,1 @@
+export const LOAD_ALBUMS = "LOAD_ALBUMS";

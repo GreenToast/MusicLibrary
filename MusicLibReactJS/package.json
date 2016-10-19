@@ -26,12 +26,8 @@
     "babel": "inherit"
   },
   "scripts": {
-    "start": "webpack --config webpack.config.js",
-    "watch": "gulp watch",
-    "build": "gulp build",
-    "deploy": "gulp deploy",
-    "test": "ava --tap | tap-nyan",
-    "serve": "node dev/server.js"
+    "build": "webpack --config webpack.config.js",
+    "start": "node dev/server.js"
   },
   "author": "Maurizio Mangione",
   "license": "MIT",
@@ -39,12 +35,6 @@
     "url": "https://github.com/Granze/react-starterify/issues"
   },
   "homepage": "https://github.com/Granze/react-starterify",
-  "dependencies": {
-    "history": "^3.0.0",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
-    "react-router": "^2.3.0"
-  },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "ava": "^0.15.2",
@@ -75,6 +65,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.0.0-alpha",
     "gulp-uglify": "^1.5.3",
+    "history": "^3.0.0",
     "html-webpack-plugin": "^2.22.0",
     "imagemin-pngquant": "^5.0.0",
     "lodash": "^4.11.1",
@@ -82,8 +73,12 @@
     "postcss-simple-extend": "^1.0.0",
     "postcss-simple-vars": "^2.0.0",
     "raw-loader": "^0.5.1",
+    "react": "^15.0.1",
     "react-addons-test-utils": "^15.0.1",
-    "react-hot-loader": "^3.0.0-beta.6",
+    "react-dom": "^15.0.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.3.0",
+    "redux": "^3.6.0",
     "rimraf": "^2.5.2",
     "run-sequence": "^1.1.5",
     "tap-nyan": "0.0.2",

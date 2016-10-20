@@ -1,9 +1,11 @@
 import { createStore } from 'redux';
 import { combineReducers } from 'redux';
-import albumListReducer from './album-list-reducer';
+import typeListReducer from './type-list-reducer';
+import typeReducer from './type-reducer';
 
 const reducers = combineReducers({
-    albums: albumListReducer
+    typelist: typeListReducer,
+    type: typeReducer
 });
 
 const store = createStore(reducers);

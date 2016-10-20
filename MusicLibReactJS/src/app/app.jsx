@@ -1,8 +1,8 @@
 import React from 'react';
-import {render} from 'react-dom';
-import AlbumListContainer from "./container/album-list.container"
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import store from "./reducer/store";
+import router from "./router";
 
 class App extends React.Component {
   render () {
@@ -10,7 +10,7 @@ class App extends React.Component {
       <div>
         <p> Hello React!</p>
         <Provider store={store}>
-          <AlbumListContainer />
+          {router}
         </Provider>
       </div>
     );
